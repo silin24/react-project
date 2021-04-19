@@ -34,12 +34,16 @@ class Addproduct extends Component {
     //  console.log(result);
     let { status, data } = result;
     if (status === 0) {
-    let categoryId = data.categoryId;
+     console.log(data);
+    let name  = data.name ;
+    // console.log(_id);
     let {categoryList} = this.state
+    console.log(categoryList);
     //遍历分类数组,取出分类名
     let category = categoryList.find((item)=>{
-      return item._id === categoryId
+      return item.name === name
     })
+    console.log(category);
     //设置表单值
     let {setFieldsValue} = this.formInstance.current
     setFieldsValue({'name':data.name})

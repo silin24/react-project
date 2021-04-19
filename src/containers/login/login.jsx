@@ -13,8 +13,7 @@ const {Item} = Form
 
 class Login extends Component{
   componentDidMount(){
-   console.log(this);
-
+  //  console.log(this);
   }
   //点击登录按钮的回调
   handleSubmit = async (values)=>{
@@ -62,7 +61,7 @@ class Login extends Component{
             <Item name="username" rules= {[
                 {required: true, message: '用户名必须输入！'},
                 {max: 12, message: '用户名必须小于等于12位'},
-                {min: 4, message: '用户名必须大于等于4位'},
+                {min: 1, message: '用户名必须大于等于1位'},
                 {pattern: /^\w+$/, message: '用户名必须是字母、数字、下划线组成'},
               ]}>
                 <Item>

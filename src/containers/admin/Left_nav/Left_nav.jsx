@@ -34,6 +34,31 @@ const { SubMenu } = Menu;
 
     })
   }
+  // componentDidMount() {
+  //   this.hasAuthMenuList()
+  // }
+  hasAuthMenuList = ()=>{
+    //获取当前用户可以看到的菜单的数组
+    const {menus,username} = this.props
+    let menuArr = []
+    if(username === 'admin') return menuList
+    else{
+      menuList.forEach((item)=>{
+        if (!item.children) {
+         menus.forEach((item2)=>{
+           item2 === item.key && menuArr.push(item)
+          })
+        } else {
+          if (item.children.some((item3)=>{return menus.indexOf(item3.key) !== -1})) {
+            menuArr.push(item)
+          }
+        }
+      })
+      console.log(menuArr);
+      return menuArr
+    }
+
+  }
   render() {
     let {pathname} = this.props.location
     return (
@@ -48,13 +73,16 @@ const { SubMenu } = Menu;
           mode="inline"
           theme="dark"
         >
-          { this.createMenu(menuList) }
+          { this.createMenu( this.hasAuthMenuList()) }
         </Menu>
       </div>
     )
   }
 }
 export default connect(
-  state => ({}),
+  state => ({
+    menus:state.userInfo.user.role.menus,
+    username:state.userInfo.user.username,
+  }),
   {saveTitle:createSaveTitleAction}
 )(withRouter(LeftNav))

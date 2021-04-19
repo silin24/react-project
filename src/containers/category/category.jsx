@@ -92,8 +92,8 @@ import {createSaveCategoryListAction} from '../../redux/actions/catrgoryList_act
           console.log(values);
           let {showModelType} = this.state
             if (showModelType === "添加") {
-              console.log(values.catrgoryName);
-              this.toAdd(values.catrgoryName)
+              console.log(values.categoryName);
+              this.toAdd(values.categoryName)
             } else {
               console.log(values);
               const categoryId = this.state.categoryId

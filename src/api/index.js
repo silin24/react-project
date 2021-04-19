@@ -29,3 +29,17 @@ export const reqDeletePicture = (name)=> ajax.post(`/manage/img/delete`,{name})
 export const reqAddProduct = (productObj)=> ajax.post(`${BASE_URL}/manage/product/add`,{...productObj})
 //请求更新商品
 export const reqUpdateProduct = (productObj)=> ajax.post(`${BASE_URL}/manage/product/update`,{...productObj})
+//请求所有角色列表
+export const reqRoleList = ()=> ajax.get(`${BASE_URL}/manage/role/list`)
+//请求添加角色
+export const reqAddRole = ({roleName})=> ajax.post(`${BASE_URL}/manage/role/add`,{roleName})
+//请求给角色授权export const reqAddRole = ({roleName})=> myAxios.post(`${BASE_URL}/manage/role/add`,{roleName})
+export const reqAuthRole = (roleObj)=> ajax.post(`${BASE_URL}/manage/role/update`,{...roleObj,auth_time:Date.now()})
+//请求获取所有用户列表（同时携带着角色列表）
+export const reqUserList = ()=> ajax.get(`${BASE_URL}/manage/user/list`)
+//请求添加用户
+export const reqAddUser = (userObj)=> ajax.post(`${BASE_URL}/manage/user/add`,{...userObj})
+//更新用户
+export const reqUpdateUser = (userObj)=> ajax.post(`${BASE_URL}/manage/user/update`,{...userObj})
+//删除用户
+export const reqDeleteUser = (userId)=> ajax.post(`${BASE_URL}/manage/user/delete`,{userId})

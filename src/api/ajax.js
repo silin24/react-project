@@ -5,7 +5,11 @@ import 'nprogress/nprogress.css'
 
 import store from '../redux/store'
 import {message} from 'antd';
-const instance = axios.create();
+const instance = axios.create(
+ {
+   baseURL: process.env.NODE_ENV === 'production' ? '/react_api' : ''
+  }
+);
 
 instance.interceptors.request.use((config)=>{
   NProgress.start()
